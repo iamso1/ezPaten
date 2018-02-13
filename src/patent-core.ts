@@ -16,10 +16,15 @@ export default class PatentCore {
     //初始化網頁
     protected async init() {
         this.browser = await puppeteer.launch({
-            headless: false,
+            headless: true,
         });
         this.page = await this.browser.newPage();
         return this;
+    }
+
+    //關閉
+    public async close() {
+        await this.browser.close();
     }
 
     //取得IPC號碼清單
