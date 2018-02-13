@@ -3,6 +3,7 @@
 ## 使用方法:
 
 > yarn install 
+
 > yarn start
 
 ## 設定: 
