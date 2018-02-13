@@ -1,5 +1,5 @@
 import { publicNums } from './info';
-const puppeteer = require('puppeteer');
+import * as puppeteer from 'puppeteer';
 
 export default class PatentCore {
     browser: any;
