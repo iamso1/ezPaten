@@ -5,10 +5,11 @@ export default class OutPut {
     public static async writeToCSV(arr_result: string[]) {
         const test = await checkFile('./result/result.csv');
         const writer = fs.createWriteStream('./result/result.csv', {
-            flags: 'a' // 'a' means appending (old data will be preserved)
+            flags: 'a', // 'a' means appending (old data will be preserved)
+            encoding: 'utf8'
         });
         arr_result.forEach((elm) => {
-            writer.write(elm + '\r');
+            writer.write('\ufeff' + elm + '\r');
         });
     }
 }
