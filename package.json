@@ -1,0 +1,15 @@
+{
+  "name": "ezpatent",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^9.4.0"
+  },
+  "scripts": {
+    "start": "tsc && node ./dist/app.js"
+  }
+}
