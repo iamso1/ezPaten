@@ -9,7 +9,7 @@ import { publicNums } from './info';
 
   //get IPCNums by PublicNums
   const arr_ipcNums = await patentCore.getIPCNumByPublicNum();
-  await OutPut.writeToCSV(arr_ipcNums, publicNums);
+  await OutPut.writeToCSV(arr_ipcNums);
   // console.log(arr_ipcNums);
 
   //get IPCNames by IPCNums

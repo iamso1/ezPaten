@@ -5,26 +5,21 @@ export default class OutPut {
 
     //直接印結果
     public static async writeToCSV(arr_result: string[]): Promise<void>;
+
     //每個結果再加入另一個值
-    public static async writeToCSV(arr_result: string[], ...arr_src: string[]): Promise<void>;
-    public static async writeToCSV(arr_result: string[], ...arr_src: string[]) {
+    public static async writeToCSV(arr_result: string[], ...arr_extraInfo: string[][]): Promise<void>;
+    public static async writeToCSV(arr_result: string[], ...arr_extraInfo: string[][]) {
         await checkFile('./result/result.csv');
-        const arr_extraInfo = Array.from(arr_src);
         const writer = fs.createWriteStream('./result/result.csv', {
             flags: 'a', // 'a' means appending (old data will be preserved)
             encoding: 'utf8'
         });
 
-        if (arr_src) {
-            arr_result.forEach((elm, index) => {
-                const extraInfo = getExtraInfo(index);
-                writer.write('\ufeff' + elm + ',' + extraInfo + '\r');
-            });
-        } else {
-            arr_result.forEach((elm) => {
-                writer.write('\ufeff' + elm + '\r');
-            });
-        }
+        arr_result.forEach((elm, index) => {
+            const extraInfo = getExtraInfo(index);
+            // writer.write('\ufeff' + elm + ',' + extraInfo + '\r');
+            writer.write(elm + ',' + extraInfo + '\r');
+        });
 
         function getExtraInfo(index: number) {
             return arr_extraInfo.map((extraInfoArr: string[]) => {
