@@ -1,5 +1,6 @@
 import PatentCore from './patent-core';
 import OutPut from './output';
+import { publicNums } from './info';
 
 (async () => {
 
@@ -8,13 +9,14 @@ import OutPut from './output';
 
   //get IPCNums by PublicNums
   const arr_ipcNums = await patentCore.getIPCNumByPublicNum();
+  await OutPut.writeToCSV(arr_ipcNums, publicNums);
   // console.log(arr_ipcNums);
 
   //get IPCNames by IPCNums
-  const arr_ipcNames = await patentCore.getIPCNameByIPCNum(arr_ipcNums);
+  // const arr_ipcNames = await patentCore.getIPCNameByIPCNum(arr_ipcNums);
 
   //write result to csv file
-  await OutPut.writeToCSV(arr_ipcNames);
+  // await OutPut.writeToCSV(arr_ipcNames);
 
   await patentCore.close();
 })();
